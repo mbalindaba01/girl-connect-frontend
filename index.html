@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://use.fontawesome.com/7e5be8745d.js"></script>
+    <title>Girl Connect</title>
+  </head>
+  <body>
+    <!-- <header>
+			<nav>
+				<div class="logo">
+					<h1>GirlConnect</h1>
+				</div>
+			</nav>
+		</header> -->
+    <div id="app">
+      <section class="user-access" >
+			<section class="login">
+				<div class="contentBox">
+					<div class="formBox">
+						<h3 class="access-heading">Login</h3>
+						<form class="login-form">
+							<input
+							type="text"
+							x-model="user.loginEmail"
+							placeholder="Please enter email"
+							/>
+							<input
+							type="password"
+							x-model="user.loginPassword"
+							placeholder="Please enter password"
+							/>
+							<button type="button">Login</button>
+							<p class="no-account">
+							Don't have an account?
+							<a href="#">Register</a>
+							</p>
+						</form>
+					</div>
+        		</div>
+			</section>
+			<section class="register">
+				<div class="contentBox">
+					<div class="formBox">
+						<h3 class="access-heading">Register</h3>
+						<form class="reg-form">
+							<input
+								type="text"
+								x-model="user.name"
+								placeholder="Please enter full name"
+							/>
+							<input
+								type="text"
+								x-model="user.email"
+								placeholder="Please enter email"
+							/>
+							<input
+								type="password"
+								x-model="user.password"
+								placeholder="Please enter password"
+							/>
+							<button type="button" @click="register()">Register</button>
+							<p class="no-account">
+							Already have an account?
+							<a href="#">Login</a>
+							</p>
+						
+						</form>
+					</div>					
+				</div>				
+			</section>	
+			<section class="send-request">
+				<div class="contentBox">
+					<div class="formBox">
+						<div class="cancel-booking">X</div>
+						<h3 class="access-heading">Request</h3>
+						<form class="request-form">
+							<select name="req-type" id="req-type">
+								<option value="">Select request type</option>
+								<option value="Funding">Funding</option>
+								<option value="Mentorship">Mentorship</option>
+								<option value="Project Collaboration">Project Collaboration</option>
+							</select>
+							<textarea name="description" id="description" cols="33" rows="5" placeholder="Briefly describe the nature of your request"></textarea>
+							<button type="button">Send request</button>
+						</form>
+					</div>
+				  </div>
+			</section>		
+		</section>
+
+      <!--Feed-->
+      <section class="feed">
+        <div class="head-sec">
+          <div class="initials">
+            <h3>MT</h3>
+            <p class="username">@mbalindaba01</p>
+          </div>
+          <header class="feed-header">
+            <h1>GirlConnect</h1>
+            <div class="filter-search">
+              <i class="fa fa-2x fa-search"></i>
+              <i class="fa fa-2x fa-filter"></i>
+            </div>
+          </header>
+        </div>
+        <div class="body-sec">
+          <div class="icons">
+            <i class="fa fa-2x fa-envelope-o"></i>
+            <i class="fa fa-2x fa-cog"></i>
+          </div>
+          <div class="requests">
+			<div class="new-request">
+				<button type="button" class="new-request">Create new request</button>
+			</div>
+            <div class="request">
+			  <h3 class="user-name">Flora Weni</h3>
+              <p class="request-type">Funding</p>
+              <p class="request-body">I am an entrepreneur based in Johannesburg. I am working on an app that does...... I am at deployment phase and having challenges with hosting fees. </p>
+              <button type="button" class="contact">Contact</button>
+            </div>
+            <div class="request">
+			  <h3 class="user-name">Kgotso Matuludi</h3>
+              <p class="request-type">Mentorship</p>
+              <p class="request-body">I am a student at the University of Johannesburg. I am in my second year of Computer Science. I am looking to get into Artificial Intelligence and would appreciate mentorship in that regard.</p>
+              <button type="button" class="contact">Contact</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
