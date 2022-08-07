@@ -20,6 +20,7 @@
 			<section class="login" x-show="isLoggingIn">
 				<div class="contentBox">
 					<div class="formBox">
+						<div x-text="successText"></div>
 						<h3 class="access-heading">Login</h3>
 						<form class="login-form">
 							<input
@@ -107,8 +108,8 @@
           <header class="feed-header">
             <h1>GirlConnect</h1>
             <div class="filter-search">
-              <i class="fa fa-2x fa-search"></i>
-              <i class="fa fa-2x fa-filter"></i>
+			  <input class="search-input" type="text" x-model="query">
+              <i class="fa fa-search" @click="search()"></i>
             </div>
           </header>
         </div>
@@ -121,18 +122,14 @@
 			<div class="new-request">
 				<button type="button" class="new-request" @click="showReq()">Create new request</button>
 			</div>
-            <div class="request">
-			  <h3 class="user-name">Flora Weni</h3>
-              <p class="request-type">Funding</p>
-              <p class="request-body">I am an entrepreneur based in Johannesburg. I am working on an app that does...... I am at deployment phase and having challenges with hosting fees. </p>
-              <button type="button" class="contact">Contact</button>
-            </div>
-            <div class="request">
-			  <h3 class="user-name">Kgotso Matuludi</h3>
-              <p class="request-type">Mentorship</p>
-              <p class="request-body">I am a student at the University of Johannesburg. I am in my second year of Computer Science. I am looking to get into Artificial Intelligence and would appreciate mentorship in that regard.</p>
-              <button type="button" class="contact">Contact</button>
-            </div>
+            <template x-for="request in requestList">
+				<div class="request">
+					<h3 class="user-name" x-text="request.full_name"></h3>
+					<p class="request-type" x-text="request.type">Funding</p>
+					<p class="request-body" x-text="request.description"></p>
+					<a class="wa-link" href="https://wa.me/27814195981?text=hi">Chat</a>
+				</div>
+			</template>
           </div>
         </div>
       </section>

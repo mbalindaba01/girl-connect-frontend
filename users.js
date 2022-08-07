@@ -2,6 +2,9 @@ import axios from 'axios'
 
 export function Users(){
     return {
+       query: '',
+       searchResults: [],
+       requestList: [],
        user : {
         loginEmail: '',
         loginPassword: '',
@@ -47,6 +50,8 @@ export function Users(){
                 password: this.user.loginPassword
             })
             .then(data => {
+                this.successText = "Log in success"
+
                 console.log(data)
                 this.isLoggedIn = false
                 this.isLoggingIn = false
@@ -93,7 +98,14 @@ export function Users(){
        getRequests(){
         axios
             .get(`https://girl-connect.herokuapp.com/connect/feeds`)
-            .then(data => console.log(data))
+            .then(data => {
+                this.requestList = data.data.data
+                console.log(this.requestList)
+            })
+       },
+
+       search(){
+            this.requestList = this.requestList.filter(item => item == query)
        }
     }
 }
