@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/girl-connect-front/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://use.fontawesome.com/7e5be8745d.js"></script>
+    <title>Girl Connect</title>
+    <script type="module" crossorigin src="/girl-connect-front/assets/index.3d561fad.js"></script>
+    <link rel="stylesheet" href="/girl-connect-front/assets/index.6332c198.css">
+  </head>
+  <body>
+    <!-- <header>
+			<nav>
+				<div class="logo">
+					<h1>GirlConnect</h1>
+				</div>
+			</nav>
+		</header> -->
+    <div id="app" x-data="users" x-init="getRequests()">
+      <section class="user-access" x-show="isLoggedIn">
+			<section class="login" x-show="isLoggingIn">
+				<div class="contentBox">
+					<div class="formBox">
+						<div x-text="successText"></div>
+						<h3 class="access-heading">Login</h3>
+						<form class="login-form">
+							<input
+							type="text"
+							x-model="user.loginEmail"
+							placeholder="Please enter email" required
+							/>
+							<input
+							type="password"
+							x-model="user.loginPassword"
+							placeholder="Please enter password" required
+							/>
+							<button type="button" @click="login()">Login</button>
+							<p class="no-account">
+							Don't have an account?
+							<a href="#" @click="showReg()">Register</a>
+							</p>
+						</form>
+					</div>
+        		</div>
+			</section>
+			<section class="register" x-show="isRegistering">
+				<div class="contentBox">
+					<div class="formBox">
+						<h3 class="access-heading">Register</h3>
+						<form class="reg-form">
+							<input
+								type="text"
+								x-model="user.name"
+								placeholder="Please enter full name" required
+							/>
+							<input
+								type="text"
+								x-model="user.email"
+								placeholder="Please enter email" required
+							/>
+							<input
+								type="text"
+								x-model="user.contact"
+								placeholder="Please enter phone number" required
+							/>
+							<label for="contact">Please use this format: 27814158867</label>
+							<input
+								type="password"
+								x-model="user.password"
+								placeholder="Please enter password" required
+							/>
+							<button type="button" @click="register()">Register</button>
+							<p class="no-account">
+							Already have an account?
+							<a href="#" @click="showLogin()">Login</a>
+							</p>
+						
+						</form>
+					</div>					
+				</div>				
+			</section>	
+			<section class="send-request" x-show="isMakingRequest">
+				<div class="contentBox">
+					<div class="formBox">
+						<div class="cancel-booking">X</div>
+						<h3 class="access-heading">Request</h3>
+						<form class="request-form">
+							<select name="req-type" id="req-type" x-model="request.type">
+								<option value="">Select request type</option>
+								<option value="Funding">Funding</option>
+								<option value="Mentorship">Mentorship</option>
+								<option value="Project Collaboration">Project Collaboration</option>
+							</select>
+							<textarea name="description" id="description" cols="33" rows="5" placeholder="Briefly describe the nature of your request" x-model="request.description"></textarea>
+							<button type="button" @click="createRequest()">Send request</button>
+						</form>
+					</div>
+				  </div>
+			</section>		
+		</section>
+
+      <!--Feed-->
+      <section class="feed" x-show="showFeed">
+        <div class="head-sec">
+          <div class="initials">
+            <h3>MT</h3>
+            <p class="username">@mbalindaba01</p>
+          </div>
+          <header class="feed-header">
+            <h1>GirlConnect</h1>
+            <div class="filter-search">
+			  <input class="search-input" type="text" x-model="query">
+              <i class="fa fa-search" @click="search()"></i>
+            </div>
+          </header>
+        </div>
+        <div class="body-sec">
+          <div class="icons">
+            <i class="fa fa-2x fa-envelope-o"></i>
+            <i class="fa fa-2x fa-cog"></i>
+          </div>
+          <div class="requests">
+			<div class="new-request">
+				<button type="button" class="new-request" @click="showReq()">Create new request</button>
+			</div>
+            <template x-for="request in requestList">
+				<div class="request">
+					<h3 class="user-name" x-text="request.full_name"></h3>
+					<p class="request-type" x-text="request.type">Funding</p>
+					<p class="request-body" x-text="request.description"></p>
+					<a class="wa-link" href="https://wa.me/27814195981?text=hi">Chat</a>
+				</div>
+			</template>
+          </div>
+        </div>
+      </section>
+    </div>
+    
+  </body>
+</html>
