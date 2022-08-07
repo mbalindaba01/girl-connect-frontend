@@ -15,9 +15,9 @@
 				</div>
 			</nav>
 		</header> -->
-    <div id="app">
-      <section class="user-access" >
-			<section class="login">
+    <div id="app" x-data="users" x-init="getRequests()">
+      <section class="user-access" x-show="isLoggedIn">
+			<section class="login" x-show="isLoggingIn">
 				<div class="contentBox">
 					<div class="formBox">
 						<h3 class="access-heading">Login</h3>
@@ -32,16 +32,16 @@
 							x-model="user.loginPassword"
 							placeholder="Please enter password"
 							/>
-							<button type="button">Login</button>
+							<button type="button" @click="login()">Login</button>
 							<p class="no-account">
 							Don't have an account?
-							<a href="#">Register</a>
+							<a href="#" @click="showReg()">Register</a>
 							</p>
 						</form>
 					</div>
         		</div>
 			</section>
-			<section class="register">
+			<section class="register" x-show="isRegistering">
 				<div class="contentBox">
 					<div class="formBox">
 						<h3 class="access-heading">Register</h3>
@@ -57,6 +57,12 @@
 								placeholder="Please enter email"
 							/>
 							<input
+								type="text"
+								x-model="user.contact"
+								placeholder="Please enter phone number"
+							/>
+							<label for="contact">Please use this format: 27814158867</label>
+							<input
 								type="password"
 								x-model="user.password"
 								placeholder="Please enter password"
@@ -64,27 +70,27 @@
 							<button type="button" @click="register()">Register</button>
 							<p class="no-account">
 							Already have an account?
-							<a href="#">Login</a>
+							<a href="#" @click="showLogin()">Login</a>
 							</p>
 						
 						</form>
 					</div>					
 				</div>				
 			</section>	
-			<section class="send-request">
+			<section class="send-request" x-show="isMakingRequest">
 				<div class="contentBox">
 					<div class="formBox">
 						<div class="cancel-booking">X</div>
 						<h3 class="access-heading">Request</h3>
 						<form class="request-form">
-							<select name="req-type" id="req-type">
+							<select name="req-type" id="req-type" x-model="request.type">
 								<option value="">Select request type</option>
 								<option value="Funding">Funding</option>
 								<option value="Mentorship">Mentorship</option>
 								<option value="Project Collaboration">Project Collaboration</option>
 							</select>
-							<textarea name="description" id="description" cols="33" rows="5" placeholder="Briefly describe the nature of your request"></textarea>
-							<button type="button">Send request</button>
+							<textarea name="description" id="description" cols="33" rows="5" placeholder="Briefly describe the nature of your request" x-model="request.description"></textarea>
+							<button type="button" @click="createRequest()">Send request</button>
 						</form>
 					</div>
 				  </div>
@@ -92,7 +98,7 @@
 		</section>
 
       <!--Feed-->
-      <section class="feed">
+      <section class="feed" x-show="showFeed">
         <div class="head-sec">
           <div class="initials">
             <h3>MT</h3>
@@ -113,7 +119,7 @@
           </div>
           <div class="requests">
 			<div class="new-request">
-				<button type="button" class="new-request">Create new request</button>
+				<button type="button" class="new-request" @click="showReq()">Create new request</button>
 			</div>
             <div class="request">
 			  <h3 class="user-name">Flora Weni</h3>

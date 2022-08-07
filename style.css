@@ -25,9 +25,6 @@ body {
   height: 80vh;
 }
 
-section.register, section.login {
-  display: none;
-}
 
 .contentBox {
   display: flex;
@@ -123,7 +120,6 @@ section.feed {
   display: flex;
   flex-direction: column;
   height: 90vh;
-  display: none;
 }
 
 .head-sec {
@@ -182,6 +178,11 @@ div.icons {
   justify-content: space-between;
   align-items: center;
   color: #485696;
+}
+
+label {
+  color: #ddd;
+  font-size: 0.8em;
 }
 
 div.requests {
