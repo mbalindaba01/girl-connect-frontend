@@ -88,6 +88,7 @@ export function Users(){
                 email: this.getCurrentUser()
             }).then(data => {
                 console.log(data)
+                this.getRequests()
                 this.request.description = ''
                 this.request.type = ''
                 this.showFeed = true
